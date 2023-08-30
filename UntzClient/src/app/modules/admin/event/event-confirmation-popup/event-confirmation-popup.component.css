@@ -1,0 +1,17 @@
+
+.modal-title{
+    letter-spacing: 0.2dvh;
+}
+
+.modal-body{
+    letter-spacing: 0.1dvh;
+}
+
+.btn{
+    letter-spacing: 0.1dvh;
+}
+
+.btn:hover{
+    background-color: red;
+    color: white;
+}

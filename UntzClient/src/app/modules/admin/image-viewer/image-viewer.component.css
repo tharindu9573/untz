@@ -1,0 +1,18 @@
+.container{
+    padding: 0;
+    letter-spacing: 0.1dvh;
+}
+
+.btn{
+    letter-spacing: 0.1dvh;
+}
+
+.btn:hover{
+    background-color: red;
+    color: white;
+}
+
+.modal-body{
+    overflow: auto;
+    height: 65vh;
+}

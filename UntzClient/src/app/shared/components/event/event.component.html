@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="card-deck">
+    <div class="card" *ngFor="let event of events" (click)="navigateToEvent(event.id)" style="cursor: pointer;">
+      <img class="card-img-top" [src]="getImage(event.images)">
+      <div class="card-body">
+        <h5 class="card-title">{{event.name}}</h5>
+        <p class="card-text">{{event.location}} | {{event.eventStartTime}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+#logout{
+    cursor: pointer;
+}
+
+.navbar{
+    padding-left: 5%;
+    padding-right: 5%;
+    letter-spacing: .3dvh;
+    display: flex;
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    width: 100%;
+    background-image: linear-gradient(to right, black , #990000);
+}
+
+a {
+    color: white;    
+}
+
+a :hover, :active, :focus {
+    color: rgb(255, 255, 255) !important;
+}
+
+#admin {
+    color: red !important;
+    margin: 0px;
+}
+
+.navbar-nav li :hover, :active, :focus {
+    color: rgb(255, 255, 255) !important;
+}
+
+.navbar-nav > li > .dropdown-menu { 
+    background-color: rgb(170, 0, 0);  
+}
+
+.navbar-nav > li > .dropdown-menu > a:hover { 
+    color: red !important;  
+}

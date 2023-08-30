@@ -1,0 +1,45 @@
+ <div class="container">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User tickets | {{userName}}</h5>
+      </div>
+      <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Reference Number</th>
+              <th scope="col">Purchased Time</th>
+              <th scope="col">Event</th>
+              <th scope="col">Ticket Category</th>
+              <th scope="col">Price</th>
+              <th scope="col">No of Tickets</th>
+              <th scope="col">Total</th>
+              <th scope="col">Recipt</th>
+              <th scope="col">QR Code</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ticket of purchasedTickets">
+              <td>{{ticket.reference}}</td>
+              <td>{{ticket.createdTime}}</td>
+              <td>{{ticket.ticket.event.name}}</td>
+              <td>{{ticket.ticket.name}}</td>
+              <td>{{ticket.ticket.price}}</td>
+              <td>{{ticket.noOfTickets}}</td>
+              <td>{{ticket.sum}}</td>
+              <td><a [href]="getRecipt(ticket.id)" download><i class="fa fa-download"></i> Download Recipt</a></td>
+              <td (click)="viewQr(ticket.id)" class="viewQr"><i class="fa fa-eye" aria-hidden="true"></i> View QR ({{ticket.qrCode?.length}})</td>
+              <td (click)="deleteTicket(ticket.id)" class="deleteTicket"><i class="fa fa-trash-o"></i></td>
+            </tr>
+          </tbody>
+      </table>
+      <div *ngIf="purchasedTickets.length === 0" class="noTickets">
+        <p>No tickets found</p>
+      </div>
+      </div>                          
+      <div class="modal-footer">
+        <button type="button" class="btn close btn-outline-danger" data-dismiss="modal" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>

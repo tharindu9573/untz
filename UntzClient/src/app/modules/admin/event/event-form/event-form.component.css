@@ -1,0 +1,124 @@
+.card-body{
+    padding: 3dvh !important;
+}
+
+.modal-content{
+    letter-spacing: 0.2dvh;
+}
+
+input[type=text]{
+    letter-spacing: 0.1dvh;
+}
+
+textarea{
+    letter-spacing: 0.1dvh;
+    height: 15dvh;
+}
+
+.ticketRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 45px;
+}
+
+.ticketNameBtn{
+    height: 38px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: 0px;
+}
+
+.ticketPriceBtn{
+    height: 38px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: 0px;
+}
+
+.removeTicketBtn{
+    height: 38px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    letter-spacing: 0.1dvh;
+}
+
+.removeTicketBtn:hover{
+    background-color: red;
+    color: white;
+}
+
+.container{
+    padding: 0;
+}
+
+.imageContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.imageCard{
+    margin-right: 1dvh;
+    margin-bottom: 1dvh;
+    border: 0px;
+}
+
+.imageCardBody{
+    padding: 0 !important;
+}
+
+.imageRemoveBtn{
+    width: 100%;
+    border: 1px solid rgb(200, 200, 200);
+    text-align: center;
+    letter-spacing: 0.1dvh;
+    background-color: white;
+    color: red;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.imageRemoveBtn:hover{
+    background-color: red;
+    color: white;
+}
+
+.btnAddTicket:hover{
+    background-color: red;
+    color: white;
+}
+
+.btnAddImage:hover{
+    background-color: red;
+    color: white;
+}
+
+.mainEventContaier{
+    margin-left: 3dvh;
+}
+
+.mainEvent{
+    background-color: red;
+    border: 2px solid red;
+    font-size: 3dvh;
+}
+
+.mainEventLabal{
+    vertical-align: -webkit-baseline-middle;
+    letter-spacing: 0.1dvh;
+}
+
+.btn{
+    letter-spacing: 0.1dvh;
+}
+
+.statusBox{
+    margin: 0 auto;
+}
+
+.processInfo{
+    margin-top: 2dvh;
+}

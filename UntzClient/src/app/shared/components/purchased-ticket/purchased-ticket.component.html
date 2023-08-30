@@ -1,0 +1,31 @@
+<div *ngIf="purchasedTicket" class="card">  
+    <div class="result-deck">
+      <h5 class="greeting">Congratulations !</h5>
+      <h5>Your order was confirmed. Please check your email inbox to see the ticket(s) and recipt</h5>
+    </div>    
+    <div class="card-body">
+      <p class="card-text user-name" *ngIf="purchasedTicket.guestUser">{{purchasedTicket.guestUser.firstName}} {{purchasedTicket.guestUser.lastName}}</p>
+      <p class="card-text user-name" *ngIf="purchasedTicket.user">{{purchasedTicket.user.firstName}} {{purchasedTicket.user.lastName}}</p>
+      <h5 class="card-title">Recipt: #{{purchasedTicket.reference}}</h5>
+    </div>
+    <div class="row">
+        <div class="col"> 
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span>PurchasedTime</span> | {{purchasedTicket.createdTime}}</li>
+            <li class="list-group-item"><span>Event</span> | {{purchasedTicket.ticket.event.name}}</li>
+            <li class="list-group-item"><span>Event Date</span> | {{purchasedTicket.ticket.event.eventStartTime}}</li>
+            <li class="list-group-item"><span>Event Location</span> | {{purchasedTicket.ticket.event.location}}</li>
+            <li class="list-group-item"><span>Entrance</span> | {{purchasedTicket.ticket.event.entrance}}</li>
+        </ul>
+        </div>
+        <div class="col"> 
+        <ul class="list-group list-group-flush">    
+            <li class="list-group-item"><span>Ticket Category</span> | {{purchasedTicket.ticket.name}}</li>
+            <li class="list-group-item"><span>Ticket Price</span> | {{purchasedTicket.ticket.price}}</li>
+            <li class="list-group-item"><span>Payment Method</span> | {{purchasedTicket.paymentMethod.name}}</li>
+            <li class="list-group-item"><span>Number of Tickets</span> | {{purchasedTicket.noOfTickets}}</li>
+            <li class="list-group-item"><span>Total</span> | {{purchasedTicket.sum}}</li>
+        </ul>
+        </div>        
+    </div>   
+</div>

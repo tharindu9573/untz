@@ -1,0 +1,56 @@
+.container{
+    margin-top: 2dvh;
+}
+
+.noFound{
+    letter-spacing: 0.1dvh;
+    padding: 2dvh;
+    text-align: center;
+}
+
+.card-body{
+    max-height: 85vh; 
+    min-height: 60vh; 
+    overflow-y: auto; 
+    overflow-x: auto;
+}
+
+.table > thead > tr > th{
+    color: red;
+    letter-spacing: 0.1dvh;
+    font-weight: normal;
+}
+
+.table > tbody > tr > td{
+    letter-spacing: 0.1dvh;
+}
+
+.card-title{
+    letter-spacing: 0.1dvh;
+}
+
+.viewTickets{
+    cursor: pointer;
+}
+
+.viewTickets:hover{
+    color: red;
+}
+
+.deleteUser{
+    cursor: pointer;
+}
+
+.deleteUser:hover{
+    color: red;
+}
+
+.btnEdit:hover{
+    background-color: red;
+    color: white;
+}
+
+.addUserRow{
+    text-align: center;
+    margin: 3dvh;
+}

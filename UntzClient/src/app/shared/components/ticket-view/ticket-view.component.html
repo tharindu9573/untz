@@ -1,0 +1,45 @@
+<div *ngIf="purchasedTicket" class="card">  
+    <div class="card-deck" *ngIf="purchasedTicket.qrCode![0]">
+        <img class="card-img-top"[src]="getImage(purchasedTicket.qrCode![0].qrCodeImage)" alt="Card image cap" style="width: 100%;">    
+        <div class="card-body">
+          <h5 class="card-title">#{{purchasedTicket.qrCode![0].reference}}</h5>
+          <a [href]="getImage(purchasedTicket.qrCode![0].qrCodeImage)" class="card-link qr-download" download><i class="fa fa-download"></i> Download QR</a>
+        </div>
+    </div>    
+    <div class="card-body">
+      <p class="card-text user-name" *ngIf="purchasedTicket.guestUser">{{purchasedTicket.guestUser.firstName}} {{purchasedTicket.guestUser.lastName}}</p>
+      <p class="card-text user-name" *ngIf="purchasedTicket.user">{{purchasedTicket.user.firstName}} {{purchasedTicket.user.lastName}}</p>
+    </div>
+    <div class="row">
+        <div class="col"> 
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span>PurchasedTime</span> | {{purchasedTicket.createdTime}}</li>
+            <li class="list-group-item"><span>Event</span> | {{purchasedTicket.ticket.event.name}}</li>
+            <li class="list-group-item"><span>Event Date</span> | {{purchasedTicket.ticket.event.eventStartTime}}</li>
+            <li class="list-group-item"><span>Event Location</span> | {{purchasedTicket.ticket.event.location}}</li>
+            <li class="list-group-item"><span>Entrance</span> | {{purchasedTicket.ticket.event.entrance}}</li>
+            <li class="list-group-item"><span>Ticket Category</span> | {{purchasedTicket.ticket.name}}</li>
+            <li class="list-group-item"><span>Ticket Price</span> | {{purchasedTicket.ticket.price}}</li>
+        </ul>
+        </div>       
+    </div>
+    <div *ngIf="isAdmitButtonDisabled" class="statusBox" style="text-align: center; margin-top: 3dvh;">
+        <div class="d-flex justify-content-center" style="margin-bottom: 2dvh;">
+            <div class="spinner-border" role="status">
+            </div>                     
+        </div>
+        <p class="processInfo">Please wait...</p>
+    </div>
+    <div class="row" *ngIf="isInValidRole && !purchasedTicket?.isAdmitted">
+        <div class="col btnAdminDeck"> 
+            <button [disabled]="isAdmitButtonDisabled" type="buton" class="btn btn-outline-danger btn-block mb-4 btnAdmin" (click)="admit(purchasedTicket.reference)">
+                Admit
+            </button>
+        </div>         
+    </div>
+    <div class="row" *ngIf="purchasedTicket?.isAdmitted" style="text-align: center; padding: 2dvh;">
+        <div class="col"> 
+            <h5 style="color: red;">Addmitted !</h5>      
+        </div>       
+    </div>
+</div>

@@ -1,0 +1,48 @@
+
+.container{
+    letter-spacing: 0.1dvh;
+    padding: 0
+}
+
+.table > thead > tr > th{
+    color: red;
+    letter-spacing: 0.1dvh;
+    font-weight: normal;
+}
+
+.table > tbody > tr > td{
+    letter-spacing: 0.1dvh;
+}
+
+.card-title{
+    letter-spacing: 0.1dvh;
+}
+
+.viewQr{
+    cursor: pointer;
+}
+
+.viewQr:hover{
+    color: red;
+}
+
+.btn{
+    letter-spacing: 0.1dvh;
+}
+
+.btn:hover{
+    background-color: red;
+    color: white;
+}
+
+.noTickets{
+    text-align: center;
+}
+
+.deleteTicket{
+    cursor: pointer;
+}
+
+.deleteTicket:hover{
+    color: red;
+}

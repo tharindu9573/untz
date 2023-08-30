@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">QR Code</h5>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <div *ngFor="let qr of imageData">
+          <div style="margin: 0 auto; width: 80%;">
+            <img *ngIf="imageData" style="max-width: 300px;" [src]="getImage(qr.qrCodeImage)">
+          </div>
+          <h5 class="card-title">#{{qr.reference}}</h5>
+          <a [href]="getImage(qr.qrCodeImage)" download><i class="fa fa-download"></i> Download</a>
+        </div>
+      </div>                          
+      <div class="modal-footer">
+        <button type="button" class="btn close btn-outline-danger" data-dismiss="modal" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>

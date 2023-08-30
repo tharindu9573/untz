@@ -1,0 +1,24 @@
+<div class="container">
+ <div>
+  <button (click)="addEvent()" class="btn btn-outline-danger btn-block mb-4 addNewEvent">
+    Add New Event
+  </button>
+ </div>
+  <div class="card-deck">
+    <div class="card" *ngFor="let event of events">
+      <img class="card-img-top" [src]="getImage(event.images)">
+      <div class="card-body">
+        <h5 class="card-title">{{event.name}}</h5>
+        <p class="card-text">{{event.location}} | {{event.eventStartTime}}</p>
+        <p class="card-text">{{ getEventDescription(event.description) }}</p>
+        <div class="ticketsContainer">
+          <p *ngFor="let ticket of event.tickets" ><span>{{ ticket.name }}</span> {{ ticket.price }}</p>
+        </div>
+        <div class="btnContainer">
+          <button class="btn btn-outline-danger btn-block mb-4 updateBtn" (click)="updateEvent(event)">Edit</button>
+          <button class="btn btn-outline-danger btn-block mb-4 deleteBtn" (click)="deleteEvent(event)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.result-deck{
+    text-align: center;    
+    margin: 2dvh;;
+}
+
+.greeting{
+    color: red;
+}
+
+.result-deck > h5{
+    font-size: 4dvh;
+}
+
+.card{
+    margin: 0 auto;
+    width: 60%;
+    letter-spacing: 0.2dvh;
+    margin-top: 3dvh;
+    margin-bottom: 10dvh;
+}
+
+li > span {
+    color: red;
+}
+
+.user-name{
+    font-size: 3dvh;
+}
+
+@media only screen and (max-width: 750px) {
+    .card-qr{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .card-img-top{
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1200px) {
+    .card-qr{
+        width: 30%; 
+    }
+
+    .card-img-top{
+        width: 70%;
+    }
+}

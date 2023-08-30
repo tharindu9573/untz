@@ -1,0 +1,46 @@
+.purchase, .close{
+    margin-top: 3dvh;
+    width: 20%;
+    cursor: pointer;
+    letter-spacing: 0.1dvh;
+}
+
+.purchase:hover{
+    background-color: red;
+}
+
+.close:hover{
+    background-color: red;
+}
+
+.row{
+    margin: 20px;
+}
+
+input[type="text"]
+{
+    letter-spacing: 0.1dvh;
+}
+
+select{
+    letter-spacing: 0.1dvh;
+}
+
+.inforMessage{
+    letter-spacing: 0.1dvh;
+}
+
+.total{
+    letter-spacing: 0.1dvh;
+    margin-top: 3dvh;
+    font-size: 3.5dvh;
+}
+
+.statusBox{
+    text-align: center;
+}
+
+.processInfo{
+    margin-top: 3dvh;
+    letter-spacing: 0.1dvh;
+}

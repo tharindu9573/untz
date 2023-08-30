@@ -1,0 +1,29 @@
+.cardStyles{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5dvh;
+    margin-bottom: 5dvh;
+}
+
+.action{
+    letter-spacing: 0.2dvh;
+}
+
+.btn{
+    letter-spacing: 0.1dvh;
+}
+
+.btn:hover{
+    background-color: red;
+    color: white;
+}
+
+.processInfo{
+    text-align: center;
+    margin-top: 1.4dvh !important;
+}
+
+input[type="text"], input[type="email"], input[type="password"]
+{
+    letter-spacing: 0.1dvh;
+}

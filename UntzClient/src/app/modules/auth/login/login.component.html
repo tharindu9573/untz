@@ -1,0 +1,29 @@
+
+  
+<div class="login card">
+    <div class="card-body px-4 py-5 px-md-5">
+        <h3>Login</h3>
+        <br>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">  
+        <div class="form-outline mb-4">
+            <input type="email" id="form3Example3" class="form-control" placeholder="User name" formControlName="userName"/>
+        </div>
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example4" class="form-control" placeholder="Password" formControlName="password"/>
+        </div>
+        <button [disabled]="isLoginButtonIsDisabled" type="submit" class="btn btn-outline-danger btn-block mb-4 loginBtn">
+            Sign In
+        </button>
+        <button type="button" (click)="navigateToRegister()" class="btn btn-outline-danger btn-block mb-4 registerBtn">
+            Register
+        </button>
+        <div class="statusBox" *ngIf="isLoginButtonIsDisabled">
+            <div class="d-flex justify-content-center spinner">
+                <div class="spinner-border" role="status">
+                </div>                     
+            </div>
+            <p class="processInfo">Please wait...</p>
+        </div>
+        </form>
+    </div>
+</div>

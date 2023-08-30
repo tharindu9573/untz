@@ -1,0 +1,95 @@
+.container{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5dvh;
+    margin-bottom: 10dvh;    
+}
+
+.addNewEvent{
+    border: 1px solid white;
+    color: white;
+    display: block;
+    margin: 0 auto;
+}
+
+.addNewEvent:hover{
+    background-color: red;
+}
+
+.card-deck{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 30%;
+    float: left;
+    margin: 2dvh;
+}
+
+.card-title{
+    letter-spacing: 0.2dvh;
+    font-size: 2dvh;
+    font-weight: bold;
+}
+
+.card-text{
+    letter-spacing: 0.1dvh;
+    font-size: 2dvh;
+}
+
+.ticketsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.ticketsContainer > p{
+    float: left;
+    letter-spacing: 0.2dvh;
+    margin-right: 1dvh;
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: 5vh;
+    padding: 0.5dvh 1dvh 0.5dvh 1dvh;
+}
+
+.ticketsContainer > p > span{
+    color: red;
+}
+
+.btnContainer{
+    margin: o auto;
+    text-align: center;
+}
+
+.deleteBtn, .updateBtn{
+    width: 100%;
+    letter-spacing: 0.2dvh;
+}
+
+.updateBtn:hover{
+    background-color: red;
+    color: white;
+}
+
+.deleteBtn:hover{
+    background-color: red;
+    color: white;
+}
+
+@media only screen and (max-width: 800px) {
+    .card{
+        width: 100%;
+        float: left;
+        margin: 2dvh;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
+    .card{
+        width: 28%;
+        float: left;
+        margin: 2dvh;
+    }
+}

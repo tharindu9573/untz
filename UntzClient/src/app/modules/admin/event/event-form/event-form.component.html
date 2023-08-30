@@ -1,0 +1,108 @@
+  <div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="!editEvent"class="modal-title">Add new event</h5>
+        <h5 *ngIf="editEvent" class="modal-title">Edit | {{event.name}}</h5>
+      </div>
+        <div class="card-body px-4 py-5 px-md-5" style="max-height: 70vh; overflow-y: auto;">
+            <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">  
+    
+            <div class="form-outline mb-4">
+                <input type="hidden" id="form3Example3" class="form-control" formControlName="id"/>
+            </div>
+    
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Name</label>
+                <input type="text" id="form3Example3" class="form-control" formControlName="name"/>            
+            </div>
+    
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Description</label>
+                <textarea id="form3Example3" class="form-control" formControlName="description"></textarea>            
+            </div>
+    
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Created Date</label>
+                <input type="datetime-local" id="form3Example3" class="form-control" formControlName="createdDate"/>            
+            </div>
+    
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example4">Pre Sale Start Date</label>
+                <input type="datetime-local" id="form3Example4" class="form-control" formControlName="preSaleStartDate"/>            
+            </div>
+    
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example4">Event Start Time</label>
+              <input type="datetime-local" id="form3Example4" class="form-control" formControlName="eventStartTime"/>            
+            </div>
+    
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example3">Location</label>
+              <input type="text" id="form3Example3" class="form-control" formControlName="location"/>            
+            </div>
+    
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example3">Entrance</label>
+              <input type="text" id="form3Example3" class="form-control" formControlName="entrance"/>            
+            </div>
+    
+            Tickets
+            <div formArrayName="tickets">
+              <div *ngFor="let ticket of tickets.controls; let i=index">
+                <div [formGroupName]="i" class="ticketRow">
+                  <input type="text" class="form-control ticketNameBtn" formControlName="name" style="width: 37%;">
+                  <input type="text" class="form-control ticketPriceBtn" formControlName="price" style="width: 37%;">       
+                  <button (click)="removeTicket(i)" style="width: 26%;" class="btn btn-outline-danger btn-block mb-4 removeTicketBtn">Remove</button>
+                </div>
+              </div>
+            </div>
+            <div class="btnContainer">
+              <button (click)="addTicket()" class="btn btn-outline-danger btn-block mb-4 btnAddTicket" type="button">Add Ticket</button> 
+            </div>
+
+            Images
+            <div class="container">
+              <div class="card-deck imageContainer" formArrayName="images">
+                <div class="card imageCard" *ngFor="let image of images.controls; let i=index" style="width: 10rem;">
+                  <div [formGroupName]="i">
+                    <input type="hidden" formControlName="name">
+                    <img class="card-img-top" [src]="getImage(image.value.base64Content)">  
+                    <div class="card-body imageCardBody">
+                      <button class="imageRemoveBtn" type="button" (click)="removeImage(i)">Remove Image</button>
+                    </div>
+                  </div>
+                </div>                           
+              </div>
+              <div class="btnContainer">
+                <button class="btn btn-outline-danger btn-block mb-4 btnAddImage" type="button" onclick="document.getElementById('exampleInputFile').click()">Add Image</button> 
+              </div>              
+            </div>
+        
+    
+            <div class="form-check mainEventContaier" formGroupName="mainEvent">
+              <input class="form-check-input mainEvent" type="checkbox" value="" id="flexCheckDefault" formControlName="isActive">                                                                         
+              <label class="form-check-label mainEventLabal" for="flexCheckDefault">Set as main event</label>
+            </div>
+    
+            <button style="display: none;" id="submit" type="submit" class="btn btn-primary btn-block mb-4">                
+            </button>       
+          </form>
+          <input type="file" id="exampleInputFile" (change)="addImage($event)" style="display: none;">
+        </div>      
+      <div class="modal-footer">
+      <div class="statusBox" *ngIf="isEditButtonIsDisabled">
+          <div class="d-flex justify-content-center spinner">
+              <div class="spinner-border" role="status">
+              </div>                     
+          </div>
+          <p class="processInfo">Please wait...</p>
+      </div>
+       <button [disabled]="isEditButtonIsDisabled" onclick="document.getElementById('submit').click()" class="btn btn-outline-danger btn-block mb-4">
+          Submit
+       </button>
+       <button (click)="close()" class="btn btn-outline-danger btn-block mb-4" data-dismiss="modal">
+          Close
+       </button>
+      </div>
+    </div>
+  </div>

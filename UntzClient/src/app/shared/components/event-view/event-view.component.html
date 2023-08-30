@@ -1,0 +1,26 @@
+
+<div class="card mb-3 container" *ngIf="event">
+    <div class="imageContainer">
+        <img *ngIf="image" class="card-img-top" [src]="image">
+    </div>    
+    <div class="card-body">
+      <h5 class="card-title">{{ event.name }} | {{ event.location }} | {{ event.eventStartTime }}</h5>
+      <p class="card-text">{{ event.description }}</p>
+      <hr>
+      <div class="countDown">
+        <p>{{ countDownTime }}</p>
+      </div>      
+      <div class="card" style="width: 18rem; margin-top: 20px;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item ticket" *ngFor="let ticket of event.tickets">
+            <span>{{ticket.name}}</span> | {{ticket.price}}
+          </li>
+        </ul>
+      </div>
+      <div class="buyContainer">
+        <button *ngIf="isPreSaleAvailable" type="button" class="btn buy btn-outline-danger" (click)="buy()">Buy</button>
+        <button *ngIf="!isPreSaleAvailable" type="button" class="btn buy btn-outline-danger" (click)="subscribe()">Subscribe for Presale</button>
+      </div>
+    </div>
+</div>
+

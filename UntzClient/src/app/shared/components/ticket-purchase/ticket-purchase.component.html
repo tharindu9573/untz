@@ -1,0 +1,82 @@
+<div>
+    <div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Buy Ticket | {{event.name}}</h5>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="isAuthenticated && user">                
+                  <div class="row">
+                    <p class="inforMessage">* These information will be used to process you ticket</p>
+                  <div class="col"> 
+                    <input type="text" class="form-control" placeholder="First name" [value]="user.firstName" disabled>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name" [value]="user.lastName" disabled>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Mobile number" [value]="user.phoneNumber" disabled>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Email" [value]="user.email" disabled>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!isAuthenticated">
+                <div class="row">
+                  <div class="col"> 
+                    <input type="text" class="form-control" placeholder="First name" [(ngModel)]="guestUserFirstName">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name" [(ngModel)]="guestUserLastName">
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Mobile number" [(ngModel)]="guestUserMobileNumber">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Email" [(ngModel)]="guestUserEmail">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col"> 
+                        <select *ngIf="tickets" [(ngModel)]="selectedTicket" (ngModelChange)="ticketChanged()" class="form-control">
+                            <option value="0" disabled selected>Select your ticket</option>
+                            <option *ngFor="let ticket of tickets" [ngValue]="ticket.id" >{{ticket.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col"> 
+                        <select [(ngModel)]="selectedTicketCount" (ngModelChange)="ticketCountChanged()" class="form-control">
+                            <option value="0" disabled selected>0</option>
+                            <option *ngFor="let value of ticketCountList" [ngValue]="value">{{value}}</option>
+                        </select>
+                    </div>
+                    <div class="col"> 
+                        <select [(ngModel)]="selectedPaymentMethod" (ngModelChange)="ticketCountChanged()" class="form-control">
+                            <option value="0" disabled selected>Select your payment method</option>
+                            <option *ngFor="let paymentMethod of paymentMethods" [ngValue]="paymentMethod.id">{{paymentMethod.name}}</option>
+                        </select>
+                    </div>
+                    <p class="total">Total Value: {{total}}</p>
+                    <div class="statusBox" *ngIf="isPurchasedButtonIsDisabled">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                            </div>                     
+                        </div>
+                        <p class="processInfo">Please wait... your request is processing...</p>
+                    </div>
+                </div>
+            </div>
+        </div>                          
+        <div class="modal-footer">
+          <button [disabled]="isPurchasedButtonIsDisabled" type="button" class="btn purchase btn-outline-danger" (click)="purchase()">Purchase</button>
+          <button type="button" class="btn close btn-outline-danger" data-dismiss="modal" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+</div>

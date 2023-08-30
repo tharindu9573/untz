@@ -1,0 +1,52 @@
+.card{
+    margin: 0 auto;
+    width: 60%;
+    letter-spacing: 0.2dvh;
+    margin-top: 3dvh;
+    margin-bottom: 10dvh;
+}
+
+.card-deck{
+    text-align: center;
+    width: 35%;
+    margin: 0 auto;
+}
+
+.qr-download{
+    margin: 0 auto;
+}
+
+li > span {
+    color: red;
+}
+
+.user-name{
+    font-size: 4dvh;
+}
+
+.btnAdminDeck{
+    text-align: center;
+    margin-top: 2dvh;
+}
+
+.btnAdmin{
+    letter-spacing: 0.1dvh;
+}
+
+.btnAdmin:hover{
+    background-color: red;
+    color: white;
+}
+
+@media only screen and (max-width: 750px) {
+
+    .card-deck{
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1200px) {
+    .card-deck{
+        width: 70%;
+    }
+}

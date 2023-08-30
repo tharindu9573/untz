@@ -1,0 +1,15 @@
+<div class="mainContainer">
+    <div class="innerContainer">
+        <p class="brand">UNTZ UNTZ</p>
+        <p class="description">ULTIMATE UNERGROUND EXPERIENCE</p>
+        <hr class="line">
+        <div class="mainEvent">
+            <img (click)="navigateToEvent()" class="mainEventImage" [src]="imageDataUrl">
+        </div>
+        <p *ngIf="untzEvent" class="details">{{untzEvent.name}} | {{untzEvent.location}}</p>
+        <div class="countDown">
+            <p>{{ countDownTime }}</p>
+        </div>
+    </div>
+</div>
+

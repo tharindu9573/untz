@@ -1,0 +1,50 @@
+<div class="card" [ngClass]="{'cardStyles':!editMode && !isCreatedByAdmin}">
+    <div class="card-body px-4 py-5 px-md-5">
+        <h3 class="action">{{action}}</h3>
+        <br>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  
+            <input type="hidden"  class="form-control" formControlName="id"/>
+            <div class="form-outline mb-4">
+                <input type="text"  class="form-control" placeholder="First name" formControlName="firstName"/>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text"  class="form-control" placeholder="Last name" formControlName="lastName"/>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text"  class="form-control" placeholder="Phone number" formControlName="phoneNumber"/>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="email"  class="form-control" placeholder="Email" formControlName="email"/>
+            </div>
+
+            <div class="form-outline mb-4" *ngIf="!editMode">
+                <input type="text"  class="form-control" placeholder="User name" formControlName="userName"/>
+            </div>
+
+            <div class="form-outline mb-4" *ngIf="!editMode">
+                <input type="password" id="form3Example4" class="form-control" placeholder="Password" formControlName="password"/>
+            </div>
+            <div class="form-outline mb-4" *ngIf="isCreatedByAdmin && roles"> 
+                <select formControlName="role" class="form-control">                    
+                    <option *ngFor="let role of roles" [ngValue]="role.name">{{role.name}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-danger btn-block mb-4" [disabled]="isActionButtonDisabled">
+                {{actionBtn}}
+            </button>    
+            <div class="statusBox" *ngIf="isActionButtonDisabled">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                    </div>                     
+                </div>
+                <p class="processInfo">Please wait...</p>
+            </div>
+        </form>
+        <button *ngIf="editMode || isCreatedByAdmin" type="buton" class="btn btn-outline-danger btn-block mb-4" (click)="close()">
+            Close
+        </button>
+    </div>
+</div>

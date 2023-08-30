@@ -1,0 +1,46 @@
+<div>
+    <div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Subscribe for Presale | {{event.name}}</h5>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="isAuthenticated && user">                
+                <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Mobile number" [value]="user.phoneNumber" disabled>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Email" [value]="user.email" disabled>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!isAuthenticated">
+                <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Mobile number" [(ngModel)]="guestUserMobileNumber">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Email" [(ngModel)]="guestUserEmail">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="statusBox" *ngIf="isSubscribeButtonIsDisabled">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                            </div>                     
+                        </div>
+                        <p class="processInfo">Please wait... your request is processing...</p>
+                    </div>
+                </div>
+            </div>
+        </div>                          
+        <div class="modal-footer">
+          <button [disabled]="isSubscribeButtonIsDisabled" type="button" class="btn subscribe btn-outline-danger" (click)="subscribe()">Subscribe</button>
+          <button type="button" class="btn close btn-outline-danger" data-dismiss="modal" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+</div>

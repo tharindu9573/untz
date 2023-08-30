@@ -1,0 +1,52 @@
+.login{
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 100px;
+    letter-spacing: 0.2dvh;
+}
+
+.registerBtn{
+    margin-left: 1dvh;
+    float: right;
+    letter-spacing: 0.1dvh;
+}
+
+.loginBtn{
+    letter-spacing: 0.1dvh;
+}
+
+.registerBtn:hover{
+    background-color: red;
+    color: white,        
+}
+
+.loginBtn:hover{
+    background-color: red;
+    color: white
+}
+
+input[type="email"], input[type="password"]
+{
+    letter-spacing: 0.1dvh;
+}
+
+.statusBox{
+    margin: 0 auto;
+}
+
+.processInfo{
+    margin-top: 2dvh;
+    text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+    .login{
+        width: 70%;
+    }    
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1400px) {
+    .login{
+        width: 40%;
+    }    
+}
