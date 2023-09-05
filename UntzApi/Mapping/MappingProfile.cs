@@ -20,7 +20,8 @@ namespace Untz.Mapping
             CreateMap<MainEvent, MainEventDto>();
 
             CreateMap<Image, ImageDto>();
-            CreateMap<ImageDto, Image>();
+            CreateMap<ImageDto, Image>()
+                .ForMember(_ => _.FilePath, (_) => _.MapFrom((_) => $"{Environment.GetEnvironmentVariable("host_name")}/uploaded/{_.Name}"));
 
             CreateMap<UntzUserDto, UntzUser>()
                 .ForMember(_ => _.Id, (_) => _.MapFrom(_ => Guid.NewGuid().ToString()));

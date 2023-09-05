@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
+using System.Net;
+using System.Text.Json;
 using Untz.Database;
 using Untz.Endpoints.Dtos;
 using UntzApi.Database.Models;
 using UntzApi.Services.Interfaces;
+using System;
 
 namespace UntzApi.Controllers
 {
@@ -75,6 +79,26 @@ namespace UntzApi.Controllers
             ticketPurchase.IsProcessCompleted = true;
 
             await _dbContext.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress("info@untzuntz.ae");
+
+            message.To.Add(new MailAddress("tharindu9573@gmail.com"));
+
+            message.Subject = "your subject";
+            message.Body = "content of your email";
+
+            SmtpClient client = new SmtpClient();
+            client.Host = _configuration["email_host"]!;
+            client.Port = Convert.ToInt32(_configuration["email_port"]!);
+            client.EnableSsl = Convert.ToBoolean(_configuration["email_ssl_enabled"]!);
+            client.Send(message);
 
             return Ok();
         }

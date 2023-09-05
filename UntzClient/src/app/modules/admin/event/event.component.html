@@ -6,7 +6,7 @@
  </div>
   <div class="card-deck">
     <div class="card" *ngFor="let event of events">
-      <img class="card-img-top" [src]="getImage(event.images)">
+      <img class="card-img-top" [src]="event.images[0].filePath">
       <div class="card-body">
         <h5 class="card-title">{{event.name}}</h5>
         <p class="card-text">{{event.location}} | {{event.eventStartTime}}</p>

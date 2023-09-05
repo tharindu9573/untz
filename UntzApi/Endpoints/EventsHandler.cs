@@ -20,6 +20,22 @@ namespace Untz.Endpoints
                     currentMainEvent.IsActive = false;
                 }
             }
+            
+            if (eventDto.Images is not null && eventDto.Images.Count() > 0)
+            {
+                eventDto.Images.ToList().ForEach(_ =>
+                {
+                    var fileType = _.Name.Split(".").Last();
+                    _.Name = $"{Guid.NewGuid()}.{fileType}";
+                    var imageContent = Convert.FromBase64String(_.Base64Content!);
+
+                    using (var file = File.Open($"{Environment.GetEnvironmentVariable("image_upload_path")}/{_.Name}", FileMode.OpenOrCreate))
+                    {
+                        file.Write(imageContent, 0, imageContent.Length);
+                        file.Flush();
+                    }
+                });
+            }
 
             var _event = mapper.Map<Event>(eventDto);
             _event.IsActive = true;
@@ -28,14 +44,7 @@ namespace Untz.Endpoints
 
             await dbContext.SaveChangesAsync();
 
-            eventDto = eventDto with
-            {
-                Id = addedEvent.Id,
-                Tickets = mapper.Map<List<TicketDto>>(addedEvent.Tickets),
-                MainEvent = mapper.Map<MainEventDto>(addedEvent.MainEvent),
-            };
-
-            return Results.Created(eventDto.Id.ToString(), eventDto);
+            return Results.Created(eventDto.Id.ToString(), mapper.Map<EventDto>(addedEvent));
         }
 
         public async static Task<IResult> UpadateEventAsync(EventDto eventDto, UntzDbContext dbContext, IMapper mapper)
@@ -96,8 +105,31 @@ namespace Untz.Endpoints
             //Manage tickets - End
 
             //Remove all images and reinsert
-            selectedEvent.Images.ToList().ForEach(_ => selectedEvent.Images.Remove(_));
-            selectedEvent.Images.AddRange(mapper.Map<List<Image>>(eventDto.Images));
+            selectedEvent.Images.ToList().ForEach(_ => 
+            {
+                var actualFilePath = $"{Environment.GetEnvironmentVariable("image_upload_path")}/{_.Name}";
+                if (File.Exists(actualFilePath)) { File.Delete(actualFilePath); }
+                selectedEvent.Images.Remove(_);
+            });
+            
+            if (eventDto.Images is not null && eventDto.Images.Count() > 0)
+            {
+                eventDto.Images.ToList().ForEach(_ =>
+                {
+                    var fileType = _.Name.Split(".").Last();
+                    _.Name = $"{Guid.NewGuid()}.{fileType}";
+                    var imageContent = Convert.FromBase64String(_.Base64Content!);
+
+                    using (var file = File.Open($"{Environment.GetEnvironmentVariable("image_upload_path")}/{_.Name}", FileMode.OpenOrCreate))
+                    {
+                        file.Write(imageContent, 0, imageContent.Length);
+                        file.Flush();
+                    }
+                });
+
+                selectedEvent.Images.AddRange(mapper.Map<List<Image>>(eventDto.Images));
+            }
+
             selectedEvent.IsActive = true;
 
             await dbContext.SaveChangesAsync();

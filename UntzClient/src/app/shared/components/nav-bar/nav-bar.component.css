@@ -11,11 +11,14 @@
     z-index: 100000;
     top: 0;
     width: 100%;
-    background-image: linear-gradient(to right, black , #990000);
+    background-color: black !important;
+    /* background-image: linear-gradient(to right, black , #990000); */
+    height: 80px;
 }
 
 a {
-    color: white;    
+    color: white;  
+    font-size: 2.5dvh;  
 }
 
 a :hover, :active, :focus {
@@ -37,4 +40,17 @@ a :hover, :active, :focus {
 
 .navbar-nav > li > .dropdown-menu > a:hover { 
     color: red !important;  
+}
+
+.navbar-brand{
+    width: 80px;
+    height: 80px;
+}
+
+@media only screen and (max-width: 1000px){
+    .navbar-brand{
+        width: 65px;
+        height: 65px;
+    }
+    
 }

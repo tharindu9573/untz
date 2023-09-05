@@ -1,36 +1,16 @@
 @import "@fontsource/black-ops-one";
 
 .mainContainer{
-    width: 80%;
     margin: 0 auto;
     text-align: center;
     color: white;    
     margin-bottom: 10dvh;
 }
 
-.brand{
-    font-size: 5dvh;
-    font-weight: bold;
-    margin: 0;
-    letter-spacing: 2dvh;
-    line-height: 1.2;
-}
-
-.description{
-    font-size: 2.5dvh;
-    margin: 0;
-    letter-spacing: 1dvh;
-    line-height: inherit;
-}
-
-.line {
-    background-color: rgb(255, 255, 255);
-    height: 0.2dvh;
-    border: none;
-}
-
 .mainEvent{
     margin-top: 3dvh;   
+    height: 50vh;
+    position: relative;
 }
 
 .mainEventImage{
@@ -38,7 +18,10 @@
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0px 0px 2px 1px white;
-    
+    height: 100%; 
+    position: absolute;
+    left: 0px;
+    top: 0px
 }
 
 .mainEventImage:hover {
@@ -50,25 +33,68 @@
     transition: all 1s ease;
 }
 
-.details{
-    margin-top: 2dvh;
-    font-size: 3dvh;
-    font-weight: 100;
-    letter-spacing: 1dvh;
-    margin-top: 1dvh;
-    margin-bottom: 0px;
+
+.videoContainer {
+    height: 70vh;
+    width: 100%;
+    position: relative;
+}
+
+video{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 .countDown{
     font-size: 6dvh;
-    letter-spacing: 2dvh;
+    letter-spacing: 0.5dvh;
     font-weight: bold;
-    font-family: "Black ops one";
+    /* font-family: "Black ops one"; */
     line-height: inherit;
+    color: red;
+    margin-top: 3dvh;
 }
 
-@media only screen and (max-width: 600px) {
-    .mainContainer{
-        width: 80%;
+.countDown > h1{
+    font-size: 10dvh;    
+}
+
+.d_leftSide > h1{
+    margin: 0;
+    font-size: 10vh;
+}
+
+.d_rightSide > h1{
+    margin: 0;
+    font-size: 10vh;
+}
+
+@media only screen and (max-width: 500px){
+    .videoContainer{
+        height: 30vh;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+    .mainEvent{
+        height: 30vh;
+    }
+
+    .videoContainer{
+        height: 40vh;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1300px) {
+    .mainEvent{
+        height: 30vh;
+    }
+
+    .videoContainer{
+        height: 50vh;
     }
 }

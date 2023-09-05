@@ -1,15 +1,34 @@
 <div class="mainContainer">
-    <div class="innerContainer">
-        <p class="brand">UNTZ UNTZ</p>
-        <p class="description">ULTIMATE UNERGROUND EXPERIENCE</p>
-        <hr class="line">
-        <div class="mainEvent">
-            <img (click)="navigateToEvent()" class="mainEventImage" [src]="imageDataUrl">
-        </div>
-        <p *ngIf="untzEvent" class="details">{{untzEvent.name}} | {{untzEvent.location}}</p>
+    <div class="Container1">
+        <!-- <div class="mainEvent" *ngIf="untzEvent">
+            <img (click)="navigateToEvent()" class="mainEventImage" [src]="untzEvent.images[0].filePath">            
+        </div> -->
+        <div class="videoContainer">
+            <video id="teaser" autoplay loop muted onloadedmetadata="this.muted = true" >
+                <source src="https://untzuntz.ae/uploaded/pexels_videos_2022396 (720p).mp4" type="video/mp4">
+            </video>    
+        </div>    
         <div class="countDown">
-            <p>{{ countDownTime }}</p>
+            <h1>{{ countDownTime }}</h1>
         </div>
     </div>
+    <div class="Container2">
+       <div class="description" style="width: 100%; padding: 30px; font-family: Impact; display: inline-block;">
+        <div class="d_leftSide" style="width: 50%; float: left; text-align: left;">
+            <h1>UNTZ UNTZ</h1>
+            <h1>SPACE EVENT</h1>
+            <h1>MUSIC FESTIVAL</h1>
+        </div>
+        <div class="d_rightSide" style="width: 50%; float: right; text-align: right;">
+            <h1>14|15</h1>
+            <h1>OCT</h1>
+            <h1>2023</h1>
+        </div>
+       </div>
+    </div>
+    <div class="Container3">
+        <div class="findOut" style="width: 300px; margin: 0 auto; background-color: red; color: white; border-radius: 100px; padding: 2dvh;">
+         <h1>FIND OUT MORE</h1>
+        </div>
+     </div>
 </div>
-

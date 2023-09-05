@@ -35,16 +35,34 @@ export class EventFormComponent implements OnInit{
           price: element.price
         }))  
       });
-      this.event.images.forEach(element=>{
+      this.event.images.forEach(async element=>{
+        const response = await fetch(element.filePath);
+        const blob = await response.blob();
+        var match = /^data:(.*);base64,(.*)$/.exec(await this.blobToBase64(blob));
         this.images.push(this.formBuilder.group({
           id: element.id,
           name: element.name,
-          base64Content: element.base64Content
+          base64Content: match![2]
         }))
       }) 
     }
   }
 
+  async blobToBase64(blob: Blob): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            if (typeof reader.result === 'string') {
+                resolve(reader.result);
+            } else {
+                reject(new Error('Failed to convert Blob to base64.'));
+            }
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+  }
+  
   initializeForm(){
     this.eventForm = this.formBuilder.group({
       id: 0,
@@ -73,20 +91,24 @@ export class EventFormComponent implements OnInit{
           this.isEditButtonIsDisabled = true;
           if(this.editEvent){
             this.eventService.updateEvent(this.eventForm.value).subscribe(_ => {
-              this.toastrService.success("Updated successfully")
-              this.eventService.forceReload.next(true);
-              this.closePopup.emit();
-              this.eventForm.reset();
+              if(_.id){
+                this.toastrService.success("Updated successfully")
+                this.eventService.forceReload.next(true);
+                this.closePopup.emit();
+                this.eventForm.reset();                
+              }
               this.isEditButtonIsDisabled = false;
             });
             
           }else{
             this.eventService.addEvent(this.eventForm.value).subscribe(_ => {
-              this.toastrService.success("Inserted successfully")
-              this.eventService.forceReload.next(true);
-              this.closePopup.emit();
-              this.eventForm.reset();
-              this.isEditButtonIsDisabled = false;
+              if(_.id){
+                this.toastrService.success("Inserted successfully")
+                this.eventService.forceReload.next(true);
+                this.closePopup.emit();
+                this.eventForm.reset();                
+              }    
+              this.isEditButtonIsDisabled = false;          
             });            
           }
         }else{

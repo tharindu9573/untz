@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SixLabors.ImageSharp;
 using System.Security.Claims;
 using Untz.Database;
 using Untz.Database.Models;
@@ -93,6 +94,22 @@ namespace Untz.Utility
                 });
 
                 await dbContext.SaveChangesAsync();
+            }
+
+            var configurations = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+            Environment.SetEnvironmentVariable("host_name", configurations["host_name"]);
+            if (webApplication.Environment.IsDevelopment())
+            {
+                Environment.SetEnvironmentVariable("image_upload_path", $"{configurations["image_upload_base_path"]}");
+            }
+            else
+            {
+                if (!Directory.Exists($"{Directory.GetCurrentDirectory()}/dist/uploaded"))
+                {
+                    Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/dist/uploaded");
+                }
+
+                Environment.SetEnvironmentVariable("image_upload_path", $"{Directory.GetCurrentDirectory()}/dist/uploaded");
             }
         }
 

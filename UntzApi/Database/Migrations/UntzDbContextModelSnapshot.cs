@@ -217,12 +217,12 @@ namespace UntzApi.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Base64Content")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<long>("EventId")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()

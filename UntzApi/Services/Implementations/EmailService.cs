@@ -17,10 +17,7 @@ namespace UntzApi.Services.Implementations
             SmtpClient client = new SmtpClient();
             client.Host = _configuration["email_host"]!;
             client.Port = Convert.ToInt32(_configuration["email_port"]!);
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential(_configuration["email_user_name"], _configuration["email_user_password"]);
+            client.EnableSsl = Convert.ToBoolean(_configuration["email_ssl_enabled"]!);
 
             MailMessage mailMessage = new();
             mailMessage.Body = body;
@@ -38,10 +35,7 @@ namespace UntzApi.Services.Implementations
             SmtpClient client = new SmtpClient();
             client.Host = _configuration["email_host"]!;
             client.Port = Convert.ToInt32(_configuration["email_port"]!);
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential(_configuration["email_user_name"], _configuration["email_user_password"]);
+            client.EnableSsl = Convert.ToBoolean(_configuration["email_ssl_enabled"]!);
 
             System.Net.Mime.ContentType contentType = new System.Net.Mime.ContentType();
             contentType.MediaType = System.Net.Mime.MediaTypeNames.Application.Octet;

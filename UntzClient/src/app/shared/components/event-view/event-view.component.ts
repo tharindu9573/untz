@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { UntzEvent } from 'src/app/models/event';
 import { EventService } from 'src/services/event.service';
 import { Image } from 'src/app/models/image';
-import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TicketPurchaseComponent } from '../ticket-purchase/ticket-purchase.component';
 import { PresaleSubscribeComponent } from '../presale-subscribe/presale-subscribe.component';
+import { Countdown } from 'src/utility/countdown';
 
 @Component({
   selector: 'app-event-view',
@@ -17,11 +17,11 @@ export class EventViewComponent implements OnInit {
 
   public event!: UntzEvent;
   private eventId!: number;
-  public image!: string;
+  public image?: string;
   countDownTime?: string = '';
   public isPreSaleAvailable: boolean = false;
 
-  constructor(private eventService: EventService, private activeRoute: ActivatedRoute, private sanitizer: DomSanitizer, private modelService: NgbModal){
+  constructor(private eventService: EventService, private activeRoute: ActivatedRoute, private modelService: NgbModal){
   }
 
   ngOnInit(): void {
@@ -54,7 +54,9 @@ export class EventViewComponent implements OnInit {
             },4000);   
           }
           
-          this.setCountDown(_.eventStartTime);
+          Countdown.setCountDown(_.eventStartTime).subscribe(_ => {
+            this.countDownTime = _;
+          });
 
           setInterval(() => {
             this.countDownTime
@@ -67,31 +69,8 @@ export class EventViewComponent implements OnInit {
 
   setImage(image: Image){
     if(image){
-      const data = image.base64Content;
-      const imageDataUrl = 'data:image/jpeg;base64,' + data;
-      this.image = imageDataUrl;
+      this.image = image?.filePath;
     }
-  }
-
-  setCountDown(endDate: Date){
-    const countDownDate = new Date(endDate).getTime();
-    const func = setInterval(() => {
-      var now = new Date().getTime();
-
-      var distance = countDownDate - now;
-
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      this.countDownTime = days + "DAYS " + hours + ":" + minutes + ":" + seconds + " Remaining...";
-
-      if (distance < 0) {
-        clearInterval(func);
-        this.countDownTime = "Expired";
-      }
-    }, 1000);
   }
 
   buy(){

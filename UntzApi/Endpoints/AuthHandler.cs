@@ -31,7 +31,7 @@ namespace Untz.Endpoints
             var user = mapper.Map<UntzUser>(untzUserDto);
             if(untzUserDto.IsByAdmin)
                 user.EmailConfirmed = true;
-
+                
             var createdResult = await userManager.CreateAsync(user, untzUserDto.Password!);            
 
             if (createdResult.Succeeded)

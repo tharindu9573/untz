@@ -1,7 +1,13 @@
 ﻿namespace Untz.Endpoints.Dtos;
 
 public record EventDto(long Id, string Name, string? Description, DateTime CreatedDate, DateTime? PreSaleStartDate, string Location, DateTime EventStartTime, string? Entrance, bool IsActive, MainEventDto? MainEvent, IEnumerable<TicketDto> Tickets, IEnumerable<ImageDto>? Images);
-public record ImageDto(long Id, string Name, string Base64Content);
+public class ImageDto
+{
+    public long Id { get; set; }
+    public string Name { get; set; } = default!;
+    public string? Base64Content { get; set; }
+    public string? FilePath { get; set; }
+}
 public record MainEventDto(long Id, bool IsActive);
 public record TicketDto(long Id, string Name, decimal Price);
 public record UntzUserLoginDto(string Username, string Password);
@@ -33,7 +39,6 @@ public class UntzCurrentLoggedInUserDto
     public string? Password { get; set; }
     public IEnumerable<string>? Roles { get; set; }
 }
-
 public class PaymentAcknowledgement
 {
     public string merchant_id { get; set; } = default!;

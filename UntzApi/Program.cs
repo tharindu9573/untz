@@ -109,7 +109,7 @@ apiGroup.MapGet("purchase/{referenceId}/admit", TicketsPurchaseHandler.AdmitAsyn
 //PaymentMethods
 apiGroup.MapGet("/paymentMethods", PaymentMethodsHandler.GetPaymentMethodsAsync);
 
-if (app.Environment.IsDevelopment())
+if (true/*app.Environment.IsDevelopment()*/)
 {
     apiGroup.MapGet("/dev/login", Helper.LoginAsync);
     apiGroup.MapGet("/dev/logout", Helper.LogoutAsync);
@@ -119,6 +119,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();
 #pragma warning disable ASP0014

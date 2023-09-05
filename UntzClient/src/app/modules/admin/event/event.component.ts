@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { UntzEvent } from 'src/app/models/event';
 import { EventService } from 'src/services/event.service';
-import { Image } from 'src/app/models/image';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventFormComponent } from './event-form/event-form.component';
 import { EventConfirmationPopupComponent } from './event-confirmation-popup/event-confirmation-popup.component';
@@ -17,7 +15,7 @@ export class EventComponent {
 
   public events: UntzEvent[] = [];
 
-  constructor(private eventService: EventService, private sanitizer: DomSanitizer, private modelService: NgbModal, private toastrService: ToastrService){
+  constructor(private eventService: EventService, private modelService: NgbModal, private toastrService: ToastrService){
     this.loadAllEvents();
     eventService.forceReload.subscribe(_ => {
       if(_){
@@ -30,15 +28,6 @@ export class EventComponent {
     this.eventService.getAllEventsDetailed().subscribe(_ => {
       this.events = _;
     });
-  }
-
-  getImage(imageCollection: Image[]): any{
-    if(imageCollection.length > 0){
-      const data = imageCollection[0].base64Content;
-      const imageDataUrl = 'data:image/jpeg;base64,' + data;
-      return this.sanitizer.bypassSecurityTrustResourceUrl(imageDataUrl);
-    }
-    return '';
   }
 
   updateEvent(event: UntzEvent){
