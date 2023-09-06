@@ -11,7 +11,7 @@ using Untz.Database;
 namespace UntzApi.Database.Migrations
 {
     [DbContext(typeof(UntzDbContext))]
-    [Migration("20230830110604_Initial")]
+    [Migration("20230905185729_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -220,12 +220,12 @@ namespace UntzApi.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Base64Content")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<long>("EventId")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -313,9 +313,6 @@ namespace UntzApi.Database.Migrations
 
                     b.Property<long?>("GuestUserId")
                         .HasColumnType("bigint");
-
-                    b.Property<bool>("IsAdmitted")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsEmailSent")
                         .HasColumnType("tinyint(1)");
@@ -500,6 +497,9 @@ namespace UntzApi.Database.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
+
+                    b.Property<bool>("IsAdmitted")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("QrCodeImage")
                         .IsRequired()

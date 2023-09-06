@@ -196,7 +196,7 @@ namespace Untz.Endpoints
 
         public static async Task<IResult> AdmitAsync(long referenceId, UntzDbContext dbContext)
         {
-            var ticket = await dbContext.TicketPurchases.FirstOrDefaultAsync(_ => _.Reference.Equals(referenceId.ToString()));
+            var ticket = await dbContext.QrCodes.FirstOrDefaultAsync(_ => _.Reference.Equals(referenceId.ToString()));
             
             if(ticket is null) 
                 return Results.BadRequest();

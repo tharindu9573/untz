@@ -16,6 +16,7 @@ export class TicketViewComponent implements OnInit{
   public purchasedTicket?: TicketPurchased;
   public isInValidRole: boolean = false;
   public isAdmitButtonDisabled = false; 
+  ticketReferenceId!: number;
   
   constructor(private authService: AuthService, private activeRoute: ActivatedRoute, 
     private sanitizer: DomSanitizer, private ticketPurchaseService: TicketPurchaseService,
@@ -24,8 +25,8 @@ export class TicketViewComponent implements OnInit{
     this.activeRoute.params.subscribe(_ => {
       if(_['purchasedReferenceId'] && _['ticketReferenceId']){
         let purchasedReferenceId = _['purchasedReferenceId'];
-        let ticketReferenceId = _['ticketReferenceId'];
-        this.ticketPurchaseService.getPurchasedTicketAloneByReference(purchasedReferenceId, ticketReferenceId).subscribe(_ =>{
+        this.ticketReferenceId = _['ticketReferenceId'];
+        this.ticketPurchaseService.getPurchasedTicketAloneByReference(purchasedReferenceId, this.ticketReferenceId.toString()).subscribe(_ =>{
           this.purchasedTicket = JSON.parse(_);          
         });
       }

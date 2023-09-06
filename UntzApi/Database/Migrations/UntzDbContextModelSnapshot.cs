@@ -311,9 +311,6 @@ namespace UntzApi.Database.Migrations
                     b.Property<long?>("GuestUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool>("IsAdmitted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsEmailSent")
                         .HasColumnType("tinyint(1)");
 
@@ -497,6 +494,9 @@ namespace UntzApi.Database.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
+
+                    b.Property<bool>("IsAdmitted")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("QrCodeImage")
                         .IsRequired()

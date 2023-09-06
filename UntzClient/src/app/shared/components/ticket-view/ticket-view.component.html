@@ -32,7 +32,7 @@
     </div>
     <div class="row" *ngIf="isInValidRole && !purchasedTicket?.isAdmitted">
         <div class="col btnAdminDeck"> 
-            <button [disabled]="isAdmitButtonDisabled" type="buton" class="btn btn-outline-danger btn-block mb-4 btnAdmin" (click)="admit(purchasedTicket.reference)">
+            <button [disabled]="isAdmitButtonDisabled" type="buton" class="btn btn-outline-danger btn-block mb-4 btnAdmin" (click)="admit(ticketReferenceId)">
                 Admit
             </button>
         </div>         

@@ -1,3 +1,8 @@
+.card-body{
+    background-color: black;
+    color: white;
+}
+
 .login{
     width: 30%;
     margin: 0 auto;
@@ -25,9 +30,18 @@
     color: white
 }
 
+input{
+    background: transparent;
+    color: white;
+}
+
 input[type="email"], input[type="password"]
 {
     letter-spacing: 0.1dvh;
+}
+
+input::placeholder {
+    color: white;
 }
 
 .statusBox{

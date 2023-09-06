@@ -1,7 +1,12 @@
+.card-body{
+    background-color: black;
+    color: white;
+}
+
 .cardStyles{
     width: 80%;
     margin: 0 auto;
-    margin-top: 5dvh;
+    margin-top: 12dvh;
     margin-bottom: 5dvh;
 }
 
@@ -23,7 +28,16 @@
     margin-top: 1.4dvh !important;
 }
 
+input{
+    background: transparent;
+    color: white;
+}
+
 input[type="text"], input[type="email"], input[type="password"]
 {
     letter-spacing: 0.1dvh;
+}
+
+input::placeholder {
+    color: white; /* Replace with the color you desire */
 }

@@ -16,7 +16,6 @@ namespace Untz.Database.Models
         public Recipt? Recipt { get; set; }
         public List<QrCode>? QrCode { get; set; }
         public PaymentStatus? PaymentStatus { get; set; }
-        public bool IsAdmitted { get; set; } = false;
         public bool IsProcessCompleted { get; set; } = false;
         public bool IsEmailSent { get; set; } = false;
     }

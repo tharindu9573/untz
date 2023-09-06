@@ -10,6 +10,7 @@ namespace UntzApi.Database.Models
         public string QrCodeImage { get; set; } = default!;
         [ForeignKey("TicketPurchaseId")]
         public TicketPurchase TicketPurchase { get; set; } = default!;
+        public bool IsAdmitted { get; set; } = false;
         public long TicketPurchaseId { get; set; }
     }
 }

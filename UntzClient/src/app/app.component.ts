@@ -13,7 +13,7 @@ export class AppComponent{
   isAuthenticated: Boolean = false;
   constructor(private authService: AuthService, private eventService: EventService){
     authService.getUser();
-    authService.isAuthenticated.subscribe(_ => {
+    authService.isAuthenticated.subscribe((_: Boolean) => {
       this.isAuthenticated = _; 
     });    
   }

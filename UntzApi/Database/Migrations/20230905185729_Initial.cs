@@ -252,7 +252,7 @@ namespace UntzApi.Database.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false),
-                    Base64Content = table.Column<string>(type: "longtext", nullable: false),
+                    FilePath = table.Column<string>(type: "longtext", nullable: false),
                     EventId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -324,7 +324,6 @@ namespace UntzApi.Database.Migrations
                     PaymentMethodId = table.Column<long>(type: "bigint", nullable: false),
                     NoOfTickets = table.Column<int>(type: "int", nullable: false),
                     Sum = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsAdmitted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     IsProcessCompleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     IsEmailSent = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
@@ -395,6 +394,7 @@ namespace UntzApi.Database.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Reference = table.Column<string>(type: "longtext", nullable: false),
                     QrCodeImage = table.Column<string>(type: "longtext", nullable: false),
+                    IsAdmitted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     TicketPurchaseId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>

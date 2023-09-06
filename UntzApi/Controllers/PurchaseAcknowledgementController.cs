@@ -73,7 +73,9 @@ namespace UntzApi.Controllers
             //Send mail attaching those tickets and recipt
             ticketPdfs.Add(recipt);
             var email = paymentAcknowledgement.custom_1 ? ticketPurchase.User!.Email : ticketPurchase.GuestUser!.Email;
-            var emailStatus = await _emailService.SendEmailWithAttachmentsAsync("Your order was confirmed!", "Congratulations... Your seat was booked. please find the attached ticket.", ticketPdfs, email!);
+            var customerName = paymentAcknowledgement.custom_1 ? ticketPurchase.User!.FirstName : ticketPurchase.GuestUser!.FirstName;
+            var emailBody = $"Dear {customerName},\r\nThank you for purchasing your ticket(s) from untzuntz.ae\r\nYour electronic ticket(s) are attached with this email.\r\nPlease print and present your electronic ticket(s) at the venue.\r\nIn order to view and print your electronic ticket(s) now or at any time, you will need Adobe Acrobat Reader. If you do not have Adobe Acrobat Reader installed visit: http://www.adobe.com for a free copy.\r\n\r\nTo contact us, email: info@untzuntz.ae\r\nThis E-mail is confidential. It may also be legally privileged. If you are not the addressee you may not copy, forward, disclose or use any part of it. If you have received this message in error, please delete it and all copies from your system and notify the sender immediately by return E-mail.\r\nInternet communications cannot be guaranteed to be timely secure, error or virus-free. The sender does not accept liability for any errors or omissions.";
+            var emailStatus = await _emailService.SendEmailWithAttachmentsAsync("Your order was confirmed!", emailBody, ticketPdfs, email!, ticketPurchase.Ticket.Event.Name);
 
             ticketPurchase.IsEmailSent = emailStatus;
             ticketPurchase.IsProcessCompleted = true;
