@@ -463,7 +463,7 @@ namespace UntzApi.Services.Implementations
                 content += @"<div style = ""margin-top: 0px;"" >";
                 content += "< p >< b > Terms & Conditions </ b ></ p >";
                 content += "< p > This Attachment is confidential.It may also be legally privileged.If you are not the addressee you may";
-                content += "        not copy, forward, disclose or use any part of it.If you have received this message in error, please";
+                content += "not copy, forward, disclose or use any part of it.If you have received this message in error, please";
                 content += "delete it and all copies from your system and notify the sender immediately by return E-mail.";
                 content += "Internet communications cannot be guaranteed to be timely secure, error or virus-free.The sender does";
                 content += "not accept liability for any errors or omissions.</p>";
