@@ -78,7 +78,8 @@ h1 {
 }
 
 .findOut {
-    width: clamp(200px, 60vw, 500px);
+    width: clamp(192px, 60vw, 230px);
+    height: clamp(52px, 16vw, 65px)
 }
 
 @media only screen and (max-width: 500px) {
