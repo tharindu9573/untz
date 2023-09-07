@@ -54,3 +54,8 @@
     text-align: center;
     margin: 3dvh;
 }
+
+.card{
+    background-color: black;
+    color: white;
+}

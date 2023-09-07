@@ -32,3 +32,30 @@ body, html {
 .modal-dialog {
     margin-top: 12dvh;
 }
+
+.modal-content{
+    background: black;
+    color: white;
+    border: 1px solid;
+}
+
+.table{
+    --bs-table-bg: transparent;
+    --bs-table-color : white;
+    --bs-table-striped-color : white;
+}
+
+input, textarea{
+    background-color: transparent !important;
+    color: white !important;
+}
+
+select{
+    background-color: transparent !important;
+    color: white !important;
+}
+
+select > option{
+    background-color: transparent !important;
+    color: black;
+}

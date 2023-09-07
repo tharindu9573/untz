@@ -10,6 +10,7 @@
     color: white;
     display: block;
     margin: 0 auto;
+    margin-top: 85px;
 }
 
 .addNewEvent:hover{
@@ -32,6 +33,11 @@
     letter-spacing: 0.2dvh;
     font-size: 2dvh;
     font-weight: bold;
+}
+
+.card-body{
+    background: black;
+    color: white;
 }
 
 .card-text{

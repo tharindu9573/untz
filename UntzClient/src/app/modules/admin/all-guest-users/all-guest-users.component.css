@@ -8,6 +8,11 @@
     text-align: center;
 }
 
+.card{
+    background-color: black;
+    color: white;
+}
+
 .card-body{
     max-height: 85vh; 
     min-height: 60vh; 
