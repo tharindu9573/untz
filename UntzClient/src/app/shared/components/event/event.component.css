@@ -17,12 +17,16 @@
     width: 30%;
     float: left;
     margin: 2dvh;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
 }
 
 .card-title{
     letter-spacing: 0.2dvh;
     font-size: 2dvh;
     font-weight: bold;
+    color: red;
 }
 
 .card-text{
