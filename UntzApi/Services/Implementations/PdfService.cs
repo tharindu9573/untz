@@ -51,7 +51,6 @@ namespace UntzApi.Services.Implementations
 
         public async Task<byte[]?> GenerateReciptAsync(TicketPurchase ticketPurchase, bool isAuthenticated)
         {
-            var document = new PdfDocument();
             var name = isAuthenticated ? $"{ticketPurchase.User!.FirstName} {ticketPurchase.User!.LastName}"
                 : $"{ticketPurchase.GuestUser!.FirstName} {ticketPurchase.GuestUser!.LastName}";
             var email = isAuthenticated ? ticketPurchase.User!.Email : ticketPurchase.GuestUser!.Email;
@@ -217,21 +216,22 @@ namespace UntzApi.Services.Implementations
              content += "</div>";
              content += "</body>";*/
 
-            content += "<div style=\"width: 100%; height: 100%; margin: 0 auto; font-family: 'Open Sans', sans-serif; color: black;\">";
-            content += "<div> <h1 style=\"margin: 0px;\"><b>UNTZ UNTZ</b></h1>";
-            content += "<img style=\"width: 100px; height: 100px; float: right; top: -20px; right: 0; position: absolute;\" src = \""+ Utility.Image.GetSecondLogo() + "\" > </div>";
-            content += "<hr style=\"margin-top: 15px; margin-bottom: 15px; border: 1px solid;\" />";
-            content += "<div> <p style=\"font-size: 15px;\" ><b><u>ELECTRONIC RECEIPT</u></b></p> </div>";
+            content += "<div style=\"width: 100%; height: 100%; margin: 0 auto; font-family: 'Open Sans', sans-serif; color: black; margin-top:10px;\">";
+            content += "<div style=\"height:40px; margin-top: 5px;\"> <h1 style=\"margin-top: 5px; left: 0;\"><b>UNTZ UNTZ</b></h1>";
+            content += "<img style=\"width: 100px; height: 100px; float: right; margin-top: -90px; right: 0; position: absolute;\" src = \"" + Utility.Image.GetSecondLogo() + "\" > </div>";
+            content += "<hr style=\"margin-top: 15px; margin-bottom: 15px; border: 1px solid;\" >";
+            content += "<div style=\"border: 2px solid red; height: 30px; width: 183px; \"> ";
+            content += "<p style=\"font-size: 15px; color: red; margin: 7px;\" ><b>ELECTRONIC RECEIPT</b></p> </div>";
             content += "<br>";
             content += "<div style=\"margin-top: 15px;\" >";
             content += "<div> <table style=\"width: 100%; border: none; border-collapse: collapse;\" >";
-            content += "<tr style=\"background-color: #dddddd;\" >";
+            content += "<tr>";
             content += "<th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b> Category </b></th>";
             content += "<th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b> Time </b></th>";
             content += "</tr>";
             content += "<tr>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" > " + category.ToUpper() + " </td>";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" > " + startTime.ToString("MM - DD - YYYY: HH: mm") + " </td>";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" > " + startTime.ToString() + " </td>";
             content += "</tr>";
             content += "</table>";
             content += "</div>";
@@ -241,59 +241,60 @@ namespace UntzApi.Services.Implementations
             content += "<table style=\"width: 100%; border: none; border-collapse: collapse;\" >";
             content += "<tr> <th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ></th>";
             content += "<th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ></th> </tr>";
-            content += "<tr style=\"background-color: #dddddd;\" >";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b> NAME </b></td>";
+            content += "<tr style=\"background-color: #FDEDEC;\" >";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>NAME</b></td>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"> " + name + " </td>";
             content += "</tr>";
             content += "<tr>";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b> REFERENCE </b></td>";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >#" + reference + "</td>";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>REFERENCE</b></td>";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">#" + reference + "</td>";
             content += "</tr>";
-            content += "<tr style= \"background-color: #dddddd;\" >";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b> TYPE </b></td>";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" > " + category + " </td>";
+            content += "<tr style= \"background-color: #FDEDEC;\" >";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>TYPE</b></td>";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"> " + category + " </td>";
             content += "</tr>";
             content += "<tr>";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b> PRICE </b></td>";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>PRICE</b></td>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">" + price + " </td>";
             content += "</tr>";
-            content += "<tr style=\"background-color: #dddddd;\" >";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b> LOCATION </b></td>";
+            content += "<tr style=\"background-color: #FDEDEC;\" >";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>LOCATION</b></td>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">" + location + "</td>";
             content += "</tr>";
             content += "<tr>";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">< b >COUNT</b></td>";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>COUNT</b></td>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">" + count + "</td>";
             content += "</tr>";
-            content += "<tr style=\"background-color: #dddddd;\" >";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">< b > PURCHASED </b></td>";
+            content += "<tr style=\"background-color: #FDEDEC;\" >";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>PURCHASED</b></td>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">" + purchasedDate + "</td>";
             content += "</tr>";
             content += "<tr>";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">< b > ENTRANCE </b></td>";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>ENTRANCE</b></td>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">" + entrance + "</td>";
             content += "</tr>";
-            content += "<tr style=\"background-color: #dddddd;\" >";
-            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">< b > TOTAL </b></td>";
+            content += "<tr style=\"background-color: #FADBD8;\" >";
+            content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\"><b>TOTAL</b></td>";
             content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\">" + sum + "</td>";
             content += "</tr>";
             content += "</table>";
             content += "</div>";
             content += "<hr style=\"margin-top: 15px; margin-bottom: 15px; border: 1px solid;\" >";
+            content += @"<div style = ""margin-top: 0px;"" >";
+            content += "<p><b> Terms & Conditions </b></p>";
+            content += "<p> This Attachment is confidential.It may also be legally privileged.If you are not the addressee you may";
+            content += "not copy, forward, disclose or use any part of it.If you have received this message in error, please";
+            content += "delete it and all copies from your system and notify the sender immediately by return E-mail.";
+            content += "Internet communications cannot be guaranteed to be timely secure, error or virus-free.The sender does";
+            content += "not accept liability for any errors or omissions.</p>";
+            content += "</div>";
+            content += "<hr style=\"margin-top: 15px; margin-bottom: 15px; border: 1px solid;\" >";
             content += "</div>";
 
+            var htmlContent = System.String.Format(content, DateTime.Now);
+            var pdfBytes = new NReco.PdfGenerator.HtmlToPdfConverter().GeneratePdf(htmlContent);
 
-
-            PdfGenerator.AddPdfPages(document, content, PageSize.A4);
-
-            byte[]? response = null;
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                document.Save(memoryStream);
-                response = memoryStream.ToArray();
-            }
-
-            return await Task.FromResult(response);
+            return await Task.FromResult(pdfBytes);
         }
 
         public string GenerateHash(string order_id, decimal amount, string currency)
@@ -337,7 +338,6 @@ namespace UntzApi.Services.Implementations
             List<byte[]?> result = new();
             foreach (var qrCode in qrCodeList)
             {
-                var document = new PdfDocument();
                 string qrImage = "data:image/png;base64, " + qrCode.Value + "";
                 var name = isAuthenticated ? $"{ticketPurchase.User!.FirstName} {ticketPurchase.User!.LastName}"
                     : $"{ticketPurchase.GuestUser!.FirstName} {ticketPurchase.GuestUser!.LastName}";
@@ -543,10 +543,10 @@ namespace UntzApi.Services.Implementations
                 content += "</body>";*/
 
 
-                content += "<div style=\"width: 100%; height: 100%; margin: 0 auto; font-family: 'Open Sans', sans-serif; color: black;\" >";
-                content += "<div>";
-                content += "<h1 style=\"margin: 0px;\" ><b>UNTZ UNTZ </b> </h1>";
-                content += "<img style=\"width: 100px; height: 100px; float: right; top: -20px; right: 0; position: absolute;\" src = \"" + Utility.Image.GetSecondLogo() + "\" >";
+                content += "<div style=\"width: 100%; height: 100%; margin: 0 auto; font-family: 'Open Sans', sans-serif; color: black; margin-top:10px;\" >";
+                content += "<div style=\"height:40px; margin-top: 5px;\">";
+                content += "<h1 style=\"margin-top: 5px; left: 0;\" ><b>UNTZ UNTZ </b> </h1>";
+                content += "<img style=\"width: 100px; height: 100px; float: right; margin-top: -90px; right: 0; position: absolute;\" src = \"" + Utility.Image.GetSecondLogo() + "\" >";
                 content += "</div>";
                 content += "<hr style=\"margin-top: 15px; margin-bottom: 15px; border: 1px solid;\" >";
                 content += "<div>";
@@ -565,8 +565,8 @@ namespace UntzApi.Services.Implementations
                 content += "</tr>";
                 content += "</table>";
                 content += "</div>";
-                content += "<div>";
-                content += "<p style=\"font-size: 15px;\" ><b><u>ELECTRONIC TICKET</u></b></p>";
+                content += "<div style=\"border: 2px solid red; height: 30px; width: 173px; \">";
+                content += "<p style=\"font-size: 15px; color: red; margin: 7px;\" ><b>ELECTRONIC TICKET</b></p>";
                 content += "</div>";
                 content += "<br>";
                 content += "<div style=\"margin-top:0px;\" >";
@@ -576,12 +576,12 @@ namespace UntzApi.Services.Implementations
                 content += "<div style=\"margin-top: 20px;\" >";
                 content += "<div style=\"max-width: 100%;\" >";
                 content += "<table style=\"width: 100%; border: none; border-collapse: collapse;\" >";
-                content += "<tr style=\"background-color: #dddddd;\" >";
+                content += "<tr>";
                 content += "<th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>Category</b></th>";
                 content += "<th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>Time</b></th>";
                 content += "</tr>";
                 content += "<tr>";
-                content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" > " + category + "</td>";
+                content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" > " + category.ToUpper() + "</td>";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >" + startTime.ToString() + "</td>";
                 content += "</tr>";
                 content += "</table>";
@@ -594,16 +594,16 @@ namespace UntzApi.Services.Implementations
                 content += "<th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ></th>";
                 content += "<th style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ></th>";
                 content += "</tr>";
-                content += "<tr style=\"background-color: #dddddd;\" >";
+                content += "<tr style=\"background-color: #FDEDEC;\" >";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>NAME</b></td>";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >" + name + "</td>";
                 content += "</tr>";
                 content += "<tr>";
-                content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >< b >TICKET REFERENCE</b>";
+                content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>TICKET REFERENCE</b>";
                 content += "</td >";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >#" + reference + "</td>";
                 content += "</tr>";
-                content += "<tr style=\"background-color: #dddddd;\" >";
+                content += "<tr style=\"background-color: #FDEDEC;\" >";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>TYPE</b></td>";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" > " + category + " </td>";
                 content += "</tr>";
@@ -611,7 +611,7 @@ namespace UntzApi.Services.Implementations
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>PRICE</b></td>";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >" + price + "</td>";
                 content += "</tr>";
-                content += "<tr style=\"background-color: #dddddd;\" >";
+                content += "<tr style=\"background-color: #FDEDEC;\" >";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>LOCATION</b></td>";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >" + location + "</td>";
                 content += "</tr>";
@@ -619,7 +619,7 @@ namespace UntzApi.Services.Implementations
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>PURCHASED</b></td>";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >" + purchasedDate + "</td>";
                 content += "</tr>";
-                content += "<tr style=\"background-color: #dddddd;\" >";
+                content += "<tr style=\"background-color: #FDEDEC;\" >";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" ><b>ENTRANCE</b></td>";
                 content += "<td style=\"text-align: left; padding: 6px; width: 50%; text-align: left;\" >" + entrance + "</td>";
                 content += "</tr>";
@@ -638,16 +638,10 @@ namespace UntzApi.Services.Implementations
                 content += "<hr style=\"margin-top: 15px; margin-bottom: 15px; border: 1px solid;\" >";
                 content += "</div>";
 
-                PdfGenerator.AddPdfPages(document, content, PageSize.A4);
+                var htmlContent = System.String.Format(content, DateTime.Now);
+                var pdfBytes = new NReco.PdfGenerator.HtmlToPdfConverter().GeneratePdf(htmlContent);
 
-                byte[]? response = null;
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    document.Save(memoryStream);
-                    response = memoryStream.ToArray();
-                }
-
-                result.Add(response);
+                result.Add(pdfBytes);
             }
 
             return await Task.FromResult(result);
