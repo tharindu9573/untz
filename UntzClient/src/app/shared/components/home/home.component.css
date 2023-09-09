@@ -41,7 +41,7 @@ video {
 
 .countDown {
     font-size: 6dvh;
-    letter-spacing: 0.5dvh;
+    letter-spacing: 1dvh;
     font-weight: bold;
     /* font-family: "Black ops one"; */
     line-height: inherit;

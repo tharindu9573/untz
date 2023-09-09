@@ -20,4 +20,11 @@ export class EventComponent {
   navigateToEvent(id: number){
     this.router.navigate([`event/${id}`]);
   }
+
+  getEventDescription(description: string){
+    var words = description.split(' ');
+    words = words.slice(0, 40);
+    words.push('...')
+    return words.join(' ');
+  }
 }

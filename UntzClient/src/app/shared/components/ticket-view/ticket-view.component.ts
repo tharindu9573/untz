@@ -54,7 +54,7 @@ export class TicketViewComponent implements OnInit{
     this.ticketPurchaseService.admit(referenceId).subscribe(_ =>{
       if(_ === true){
         this.toastrService.success("Admitted!");
-        this.purchasedTicket!.isAdmitted = true;
+        this.purchasedTicket!.qrCode![0].isAdmitted = true;
       }
       this.isAdmitButtonDisabled = false;
     })

@@ -59,3 +59,12 @@
     background-color: black;
     color: white;
 }
+
+tbody > tr{
+    cursor: pointer;
+}
+
+tbody > tr:hover > td{
+    transition: 0.4s;
+    color: red !important;
+}

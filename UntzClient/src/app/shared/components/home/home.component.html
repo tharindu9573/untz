@@ -14,10 +14,10 @@
         </div>
     </div>
     <div class="Container2" *ngIf="untzEvent">
-       <div class="description" style="width: 100%; padding: 30px; font-family: Impact; display: inline-block;">
+       <div class="description" style="width: 100%; padding: 30px; font-family: Impact; display: inline-block; letter-spacing: 0.4dvh;">
         <div class="d_leftSide" style="width: 50%; float: left; text-align: left;">
             <h1>UNTZ UNTZ</h1>
-            <h1>{{untzEvent.name}}</h1>
+            <h1>{{untzEvent.name | uppercase}}</h1>
             <h1>MUSIC FESTIVAL</h1>
         </div>
         <div class="d_rightSide" style="width: 50%; float: right; text-align: right;">
@@ -29,7 +29,7 @@
     </div>
     <div class="Container3">
         <div (click)="navigateToEvent()" class="findOut" style="margin: 0 auto; background-color: red; color: white; border-radius: 100px; padding: 2dvh;">
-         <h2>FIND OUT MORE</h2>
+         <h2 style="font-weight: bold;">FIND OUT MORE</h2>
         </div>
      </div>
 </div>

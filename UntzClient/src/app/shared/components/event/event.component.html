@@ -5,6 +5,7 @@
       <div class="card-body">
         <h5 class="card-title">{{event.name}}</h5>
         <p class="card-text">{{event.location}} | {{event.eventStartTime}}</p>
+        <p class="card-text">{{ getEventDescription(event.description) }}</p>
       </div>
     </div>
   </div>

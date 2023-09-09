@@ -4,6 +4,8 @@
     letter-spacing: 0.2dvh;
     margin-top: 3dvh;
     margin-bottom: 10dvh;
+    background-color: black;
+    color: white;
 }
 
 .card-deck{
@@ -31,6 +33,10 @@ li > span {
 
 .user-name{
     font-size: 4dvh;
+}
+
+.row{
+    background-color: white;
 }
 
 @media only screen and (max-width: 750px) {
