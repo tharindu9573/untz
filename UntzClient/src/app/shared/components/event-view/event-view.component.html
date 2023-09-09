@@ -17,7 +17,7 @@
         <span><img style="width: 35px; margin-left: 4dvh;" src="assets\Images\lock.png"></span>
       
         <ul style="list-style: none; padding: 0; margin-top: 2dvh;">
-          <li style="width: 100%; font-size: 4dvh; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" *ngFor="let ticket of event.tickets">
+          <li style="width: 100%; font-size: clamp(20px, 2vw, 4vh) !important; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" *ngFor="let ticket of event.tickets">
             <span>{{ticket.name | uppercase}}</span> (LKR {{ticket.price}})
           </li>
         </ul>

@@ -10,7 +10,7 @@ import { Countdown } from 'src/utility/countdown';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit{
+export class HomeComponent implements OnInit{
   countDownTime?: string = '';
   untzEvent!: UntzEvent;
   imageVisible: boolean = true;
@@ -21,12 +21,19 @@ export class HomeComponent implements OnInit, AfterViewInit{
   constructor(private eventService: EventService, private router: Router){
     
   }
-  ngAfterViewInit(): void {
+
+  onVideoLoaded(){
     var video = document.getElementById("teaser") as HTMLVideoElement;
-        video.onloadeddata = () => {
-          video.play();
-          this.imageVisible = false;  
-        };
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      video.removeAttribute("controls");
+    }
+    video.onloadeddata = () => {
+      setTimeout(() => {
+        video.play();
+        this.imageVisible = false; 
+      }, 5000);             
+    };
   }
 
   ngOnInit(): void {

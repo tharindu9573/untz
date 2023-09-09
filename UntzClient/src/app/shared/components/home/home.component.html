@@ -5,7 +5,7 @@
         </div> -->
         <div class="videoContainer">
             <img *ngIf="untzEvent && imageVisible" (click)="navigateToEvent()" class="mainEventImage" [src]="untzEvent.images[0].filePath">
-            <video id="teaser" autoplay loop muted onloadedmetadata="this.muted = true" >
+            <video (loadedmetadata)="onVideoLoaded()" id="teaser" loop muted onloadedmetadata="this.muted = true" >
                 <source src="https://untzuntz.ae/uploaded/teaser_medium.mp4" type="video/mp4">
             </video>    
         </div>    

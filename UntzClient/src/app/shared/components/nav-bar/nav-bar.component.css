@@ -68,5 +68,11 @@ a :hover, :active, :focus {
         width: 50px;
         height: 50px;
     }
-    
+}
+
+@media only screen and (max-width: 950px){
+    a {
+        color: white;  
+        font-size: 3.0dvh;  
+    }
 }
