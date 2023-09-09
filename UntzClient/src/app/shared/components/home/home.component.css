@@ -15,25 +15,15 @@
 
 .mainEventImage {
     width: 100%;
-    border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0px 0px 2px 1px white;
     height: 100%;
     position: absolute;
     left: 0px;
-    top: 0px
+    top: 0px;
+    z-index: 30000;
+    border: none;
+    
 }
-
-.mainEventImage:hover {
-    -webkit-filter: brightness(60%);
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
-
-
 .videoContainer {
     height: 70vh;
     width: 100%;
@@ -51,7 +41,7 @@ video {
 
 .countDown {
     font-size: 6dvh;
-    letter-spacing: 0.5dvh;
+    letter-spacing: 1dvh;
     font-weight: bold;
     /* font-family: "Black ops one"; */
     line-height: inherit;
@@ -79,7 +69,13 @@ h1 {
 
 .findOut {
     width: clamp(192px, 60vw, 230px);
-    height: clamp(52px, 16vw, 65px)
+    cursor: pointer;
+}
+
+.findOut > h2{
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.2dvh;
 }
 
 @media only screen and (max-width: 500px) {

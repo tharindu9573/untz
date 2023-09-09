@@ -16,6 +16,5 @@ export interface TicketPurchased{
     noOfTickets: number,
     sum: number,
     recipt?: Recipt,
-    qrCode?: QrCode[],
-    isAdmitted: boolean
+    qrCode?: QrCode[]
 }

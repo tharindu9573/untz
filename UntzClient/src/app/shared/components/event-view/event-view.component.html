@@ -8,18 +8,27 @@
       <p class="card-text">{{ event.description }}</p>
       <hr>
       <div class="countDown">
-        <p>{{ countDownTime }}</p>
+        <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{ countDownTime }}</p>
       </div>      
-      <div class="card" style="width: 18rem; margin-top: 20px;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item ticket" *ngFor="let ticket of event.tickets">
-            <span>{{ticket.name}}</span> | {{ticket.price}}
+      <div class="buyContainer">
+        
+        <button *ngIf="isPreSaleAvailable" type="button" class="btn buy btn-outline-danger" (click)="buy()">EARLY BIRDS</button>
+        <button *ngIf="!isPreSaleAvailable" type="button" class="btn buy btn-outline-danger" (click)="subscribe()">Subscribe for Presale</button>
+        <span><img style="width: 35px; margin-left: 4dvh;" src="assets\Images\lock.png"></span>
+      
+        <ul style="list-style: none; padding: 0; margin-top: 2dvh;">
+          <li style="width: 100%; font-size: clamp(20px, 2vw, 4vh) !important; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" *ngFor="let ticket of event.tickets">
+            <span>{{ticket.name | uppercase}}</span> (LKR {{ticket.price}})
           </li>
         </ul>
       </div>
-      <div class="buyContainer">
-        <button *ngIf="isPreSaleAvailable" type="button" class="btn buy btn-outline-danger" (click)="buy()">Buy</button>
-        <button *ngIf="!isPreSaleAvailable" type="button" class="btn buy btn-outline-danger" (click)="subscribe()">Subscribe for Presale</button>
-      </div>
+      <div class="card" style="width: 30rem; margin-top: 20px;">
+        <!-- <ul class="list-group list-group-flush">
+          <li class="list-group-item ticket" *ngFor="let ticket of event.tickets">
+            <span>{{ticket.name}}</span> | {{ticket.price}}
+          </li>
+        </ul> -->
+        
+      </div>      
     </div>
 </div>

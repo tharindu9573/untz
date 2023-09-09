@@ -73,7 +73,7 @@
               <div class="row gutters-sm">
                 <div *ngFor="let ticket of purchasedTickets" class="col-sm-6 mb-3 myTicketCard">
                   <div class="card h-100">
-                    <div class="card-body" (click)="navigateToEvent(ticket.reference)">
+                    <div style="border: 1px solid white; border-radius: 5px;" class="card-body" (click)="navigateToEvent(ticket.reference)">
                       <h6 class="d-flex align-items-center mb-3">#Ref: {{ticket.reference}}</h6>
                       <h6 class="d-flex align-items-center mb-3">{{ticket.ticket.event.name}}</h6>
                       <table class="ticketInfoTable">

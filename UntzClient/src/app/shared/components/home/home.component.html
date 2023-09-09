@@ -4,19 +4,20 @@
             <img (click)="navigateToEvent()" class="mainEventImage" [src]="untzEvent.images[0].filePath">            
         </div> -->
         <div class="videoContainer">
-            <video id="teaser" autoplay loop muted onloadedmetadata="this.muted = true" >
-                <source src="https://untzuntz.ae/uploaded/pexels_videos_2022396 (720p).mp4" type="video/mp4">
+            <img *ngIf="untzEvent && imageVisible" (click)="navigateToEvent()" class="mainEventImage" [src]="untzEvent.images[0].filePath">
+            <video (loadedmetadata)="onVideoLoaded()" id="teaser" loop muted onloadedmetadata="this.muted = true" >
+                <source src="https://untzuntz.ae/uploaded/teaser_medium.mp4" type="video/mp4">
             </video>    
         </div>    
         <div class="countDown">
-            <h1>{{ countDownTime }}</h1>
+            <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{ countDownTime }}</h1>
         </div>
     </div>
-    <div class="Container2">
-       <div class="description" style="width: 100%; padding: 30px; font-family: Impact; display: inline-block;">
+    <div class="Container2" *ngIf="untzEvent">
+       <div class="description" style="width: 100%; padding: 30px; font-family: Impact; display: inline-block; letter-spacing: 0.4dvh;">
         <div class="d_leftSide" style="width: 50%; float: left; text-align: left;">
             <h1>UNTZ UNTZ</h1>
-            <h1>SPACE EVENT</h1>
+            <h1>{{untzEvent.name | uppercase}}</h1>
             <h1>MUSIC FESTIVAL</h1>
         </div>
         <div class="d_rightSide" style="width: 50%; float: right; text-align: right;">
@@ -27,8 +28,8 @@
        </div>
     </div>
     <div class="Container3">
-        <div class="findOut" style="margin: 0 auto; background-color: red; color: white; border-radius: 100px; padding: 2dvh;">
-         <h2>FIND OUT MORE</h2>
+        <div (click)="navigateToEvent()" class="findOut" style="margin: 0 auto; background-color: red; color: white; border-radius: 100px; padding: 2dvh;">
+         <h2 style="font-weight: bold;">FIND OUT MORE</h2>
         </div>
      </div>
 </div>

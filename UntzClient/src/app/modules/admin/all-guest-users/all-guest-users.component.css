@@ -49,3 +49,12 @@
 .deleteUser:hover{
     color: red;
 }
+
+tbody > tr{
+    cursor: pointer;
+}
+
+tbody > tr:hover > td{
+    transition: 0.4s;
+    color: red !important;
+}

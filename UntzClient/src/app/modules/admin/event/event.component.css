@@ -27,6 +27,7 @@
     width: 30%;
     float: left;
     margin: 2dvh;
+    border: none;
 }
 
 .card-title{

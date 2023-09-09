@@ -30,14 +30,14 @@
         </div>
         <p class="processInfo">Please wait...</p>
     </div>
-    <div class="row" *ngIf="isInValidRole && !purchasedTicket?.isAdmitted">
+    <div class="row" *ngIf="isInValidRole && !purchasedTicket.qrCode![0].isAdmitted">
         <div class="col btnAdminDeck"> 
             <button [disabled]="isAdmitButtonDisabled" type="buton" class="btn btn-outline-danger btn-block mb-4 btnAdmin" (click)="admit(ticketReferenceId)">
                 Admit
             </button>
         </div>         
     </div>
-    <div class="row" *ngIf="purchasedTicket?.isAdmitted" style="text-align: center; padding: 2dvh;">
+    <div class="row" *ngIf="purchasedTicket.qrCode![0].isAdmitted" style="text-align: center; padding: 2dvh;">
         <div class="col"> 
             <h5 style="color: red;">Addmitted !</h5>      
         </div>       
