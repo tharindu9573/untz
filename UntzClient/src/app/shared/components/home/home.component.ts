@@ -41,7 +41,8 @@ export class HomeComponent implements OnInit{
     this.eventService.getMainEvent().subscribe(_ => {
       if(_)
       {
-        this.untzEvent = _;      
+        this.untzEvent = _;  
+        sessionStorage.setItem("mainEvent", _.id.toString());    
         Countdown.setCountDown(_.eventStartTime).subscribe(_ => {
           this.countDownTime = _;
         });        

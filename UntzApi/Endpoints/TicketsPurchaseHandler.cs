@@ -5,9 +5,9 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Untz.Database;
-using Untz.Database.Models;
-using Untz.Endpoints.Dtos;
 using UntzApi.Services.Interfaces;
+using UntzCommon.Database.Models;
+using UntzCommon.Models.Dtos;
 
 namespace Untz.Endpoints
 {
@@ -136,7 +136,7 @@ namespace Untz.Endpoints
 
         public static async Task<IResult> GetPurchasedTicketByReference(string referenceId, UntzDbContext dbContext)
         {
-            var ticketPurchases = await dbContext.TicketPurchases.Where(_ => _.Reference.Equals(referenceId))                                
+            var ticketPurchases = await dbContext.TicketPurchases.Where(_ => _.Reference.Equals(referenceId))
                 .Include(_ => _.PaymentMethod)
                 .Include(_ => _.User)
                 .Include(_ => _.GuestUser)
@@ -197,8 +197,8 @@ namespace Untz.Endpoints
         public static async Task<IResult> AdmitAsync(long referenceId, UntzDbContext dbContext)
         {
             var ticket = await dbContext.QrCodes.FirstOrDefaultAsync(_ => _.Reference.Equals(referenceId.ToString()));
-            
-            if(ticket is null) 
+
+            if (ticket is null)
                 return Results.BadRequest();
 
             ticket.IsAdmitted = true;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Untz.Database;
-using Untz.Endpoints.Dtos;
+using UntzCommon.Models.Dtos;
 
 namespace Untz.Endpoints
 {

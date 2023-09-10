@@ -30,6 +30,9 @@
       </ul>
       <ul class="navbar-nav" style="margin-left: auto;">
         <li *ngIf="isAuthenticated" class="nav-item">
+          <a style="padding-left: 20px; padding-right: 20px; background-color: red; border-radius: 50px; letter-spacing: 0.1dvh; margin-right: 3dvh; text-align: center; cursor: pointer;" class="nav-link" (click)="navigateToEvent()">BUY TICKETS</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item">
           <a class="nav-link" routerLink="auth/profile">{{ authUser?.firstName }} {{ authUser?.lastName}}</a>
         </li>
         <li *ngIf="!isAuthenticated" class="nav-item">

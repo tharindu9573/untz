@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Untz.Database;
-using Untz.Database.Models;
 using Untz.Endpoints;
-using Untz.Mapping;
 using Untz.Utility;
 using UntzApi.Services.Implementations;
 using UntzApi.Services.Interfaces;
+using UntzCommon.Database.Models;
+using UntzCommon.Mapping;
 
 var builder = WebApplication.CreateBuilder();
 

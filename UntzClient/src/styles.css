@@ -32,6 +32,7 @@ body, html {
 
 .modal-dialog {
     margin-top: 12dvh;
+    z-index: 500000;
 }
 
 .modal-content{

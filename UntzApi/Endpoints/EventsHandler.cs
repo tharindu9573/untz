@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Untz.Database;
-using Untz.Database.Models;
-using Untz.Endpoints.Dtos;
-using UntzApi.Database.Models;
+using UntzCommon.Database.Models;
+using UntzCommon.Models.Dtos;
 
 namespace Untz.Endpoints
 {
@@ -20,7 +19,7 @@ namespace Untz.Endpoints
                     currentMainEvent.IsActive = false;
                 }
             }
-            
+
             if (eventDto.Images is not null && eventDto.Images.Count() > 0)
             {
                 eventDto.Images.ToList().ForEach(_ =>
@@ -105,13 +104,13 @@ namespace Untz.Endpoints
             //Manage tickets - End
 
             //Remove all images and reinsert
-            selectedEvent.Images.ToList().ForEach(_ => 
+            selectedEvent.Images.ToList().ForEach(_ =>
             {
                 var actualFilePath = $"{Environment.GetEnvironmentVariable("image_upload_path")}/{_.Name}";
                 if (File.Exists(actualFilePath)) { File.Delete(actualFilePath); }
                 selectedEvent.Images.Remove(_);
             });
-            
+
             if (eventDto.Images is not null && eventDto.Images.Count() > 0)
             {
                 eventDto.Images.ToList().ForEach(_ =>

@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SixLabors.ImageSharp;
 using System.Security.Claims;
 using Untz.Database;
-using Untz.Database.Models;
+using UntzCommon.Database.Models;
 
 namespace Untz.Utility
 {

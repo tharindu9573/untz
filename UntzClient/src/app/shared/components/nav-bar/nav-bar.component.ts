@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthUser } from 'src/app/models/auth-user';
 import { AuthService } from 'src/services/auth.service';
 
@@ -13,7 +14,7 @@ export class NavBarComponent {
   public authUser?: AuthUser;
   public isAdmin?: boolean = false;
 
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService, private router: Router){
     authService.isAuthenticated.subscribe(_ => {
       this.isAuthenticated = _;
       this.authUser = authService.authUser; 
@@ -23,5 +24,12 @@ export class NavBarComponent {
 
   logout(){
     this.authService.logout();
+  }
+
+  navigateToEvent(){
+    let mainEvent = sessionStorage.getItem("mainEvent");
+    if(mainEvent){
+      this.router.navigate([`event/${mainEvent}`]);
+    }
   }
 }
